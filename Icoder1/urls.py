@@ -19,13 +19,9 @@ from django.urls import path , include
 admin.site.site_header = 'Icoder Panel'
 admin.site.site_title = 'Icoder Panel'
 admin.site.index_title = 'Welcome to Icoder Panel'
-from django.views.static import serve #For horuka hosting
-from django.conf.urls import url #For horuka hosting
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('blog/', include('blog.urls')),
-    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), #For horuka hosting
-    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), #For horuka hosting
 ]
