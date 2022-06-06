@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} blogHome {% endblock title %}
+<!--This active block is from base.html and from class of navigation bar to active it when we click on specific nav-->
+{% block blogactive %} active {% endblock %}
+
+
+{% block body %}
+<div class="container my-3">
+    <h2>Coding Articles by iCoder</h2>
+    {% for items in post %}
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Article by {{ items.author }}</strong>
+            <h3 class="mb-0"><a href="/blog/{{ items.slug }}" style="color: teal">{{ items.title }}</a></h3>
+            <div class="mb-1 text-muted">{{ items.timestamp }}</div>
+            <p class="card-text mb-auto">{{ items.content| truncatechars:300}}</p>
+            <div class="my-2">
+            	<a href="/blog/{{ items.slug }}" role="button" class="btn btn-primary">Continue reading</a>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+ {% endblock %}
